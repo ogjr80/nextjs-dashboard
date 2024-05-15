@@ -23,8 +23,8 @@ export default function Page() {
             </a>
             , brought to you by Vercel.
             <div className={styles.shape}></div>
+  
           </p>
-          <h1 className="text-blue-500">I'm blue</h1>
          
           <Link
             href="/login"
