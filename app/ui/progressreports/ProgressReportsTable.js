@@ -5,7 +5,7 @@ const ProgressReportsTable = async  () => {
 
   return (
     <div className="overflow-x-auto">
-      <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
+      <table className="min-w-full bg-white border border-gopherlabs.co.... - Opher Laray-200 rounded-lg shadow-md">
         <thead className="bg-gray-100">
           <tr>
             <th className="py-3 px-4 border-b">Startup ID</th>
