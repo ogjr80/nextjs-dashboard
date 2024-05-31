@@ -1,0 +1,99 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+enum Role {
+  Admin
+  Reviewer
+  StartupApplicant
+}
+
+enum StartupType {
+  ForProfit
+  NonProfit
+}
+
+enum ApplicationStatus {
+  Approved
+  Rejected
+  Pending
+}
+
+model User {
+  id                String    @id @default(uuid())
+  name              String
+  email             String    @unique
+  role              Role     
+  organizationName  String?
+  startup           Startup?  @relation(fields: [startupId], references: [id])
+  startupId         String?
+}
+
+model Startup {
+  id                    String               @id @default(uuid())
+  name                  String
+  founderDetails        String
+  contactInformation    String
+  type                  StartupType
+  grantAmountApproved   Float
+  grantDisbursementDate DateTime
+  logo                  String
+  applications          Application[]
+  progressReports       ProgressReport[]
+  financialTrackings    FinancialTracking[]
+  users                 User[]
+}
+
+model Application {
+  id                String             @id @default(uuid())
+  startupId         String
+  applicationDate   DateTime
+  status            ApplicationStatus
+  requestedAmount   Float
+  projectDescription String
+  documents         Json
+  reviewerComments  String
+  startup           Startup            @relation(fields: [startupId], references: [id])
+}
+
+model ProgressReport {
+  id                String             @id @default(uuid())
+  startupId         String
+  reportingPeriod   DateTime
+  milestonesAchieved String
+  fundsUtilized     Float
+  impactMetrics     Json
+  challengesFaced   String
+  futurePlans       String
+  startup           Startup            @relation(fields: [startupId], references: [id])
+}
+
+model FinancialTracking {
+  id                String             @id @default(uuid())
+  startupId         String
+  date              DateTime
+  amount            Float
+  category          String
+  description       String
+  startup           Startup            @relation(fields: [startupId], references: [id])
+}
+
+model Overview {
+  id                  String   @id @default(uuid())
+  totalStartups       Int
+  totalGrantsDisbursed Float
+  totalFundsUtilized  Float
+  totalFundsRemaining Float
+}

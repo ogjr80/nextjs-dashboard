@@ -6,6 +6,12 @@ import {
 } from '@heroicons/react/24/outline';
 import { lusitana } from '@/app/ui/fonts';
 import { fetchCardData } from '@/app/lib/data';
+import { fetchOverview } from '@/app/lib/prismaQueries';
+
+// import {data} from '/data/sampleData.json';
+
+
+
 
 const iconMap = {
   collected: BanknotesIcon,
@@ -21,18 +27,42 @@ export default async function CardWrapper() {
     totalPaidInvoices,
     totalPendingInvoices
   } = await fetchCardData();
+  const data = await fetchOverview();
+  // const numberOfInvoices = Number(data[0].rows[0].count ?? '0');
+  // const numberOfCustomers = Number(data[1].rows[0].count ?? '0');
+  // const totalPaidInvoices = formatCurrency(data[2].rows[0].paid ?? '0');
+  // const totalPendingInvoices = formatCurrency(data[2].rows[0].pending ?? '0');
+
+  console.log(data); 
+
   return (
     <>
       {/* NOTE: comment in this code when you get to this point in the course */}
 
-      <Card title="Collected" value={totalPaidInvoices} type="collected" />
+      {/* <Card title="Collected" value={totalPaidInvoices} type="collected" />
       <Card title="Pending" value={totalPendingInvoices} type="pending" />
       <Card title="Total Invoices" value={numberOfInvoices} type="invoices" />
       <Card
         title="Total Customers"
         value={numberOfCustomers}
         type="customers"
-      />
+      /> */}
+      {
+        data.map(d => {
+          return (
+            <>
+              <Card title="Total Startups" value={d.totalStartups} type="invoices" />
+              <Card title="Total Grant Disbured" value={d.totalGrantsDisbursed} type="collected" />
+              <Card title="Total Funds Utilized" value={d.totalFundsUtilized} type="pending" />
+              <Card
+                title="Total Funds Remaining"
+                value={d.totalFundsRemaining}
+                type="customers"
+              />
+            </>
+        )
+      })
+      }
     </>
   );
 }

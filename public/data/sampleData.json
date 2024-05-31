@@ -1,0 +1,34 @@
+{
+  "users": [
+    { "name": "Admin User", "email": "admin@accelup.org", "role": "Admin", "organizationName": null },
+    { "name": "John Doe", "email": "john@startupone.com", "role": "Startup Applicant", "organizationName": "Startup One" },
+    { "name": "Jane Smith", "email": "jane@startuptwo.org", "role": "Startup Applicant", "organizationName": "Startup Two" },
+    { "name": "Reviewer One", "email": "reviewer@accelup.org", "role": "Reviewer", "organizationName": null }
+  ],
+  "startups": [
+    { "id": 1, "name": "Startup One", "founderDetails": "John Doe", "contactInformation": "john@startupone.com", "type": "For-profit", "grantAmountApproved": 100000, "grantDisbursementDate": "2024-01-15", "logo": "/images/startuplogo1.png" },
+    { "id": 2, "name": "Startup Two", "founderDetails": "Jane Smith", "contactInformation": "jane@startuptwo.org", "type": "Non-profit", "grantAmountApproved": 50000, "grantDisbursementDate": "2024-02-01", "logo": "/images/startuplogo2.png" }
+  ],
+  "applications": [
+    { "startupId": 1, "applicationDate": "2023-12-01", "status": "Approved", "requestedAmount": 100000, "projectDescription": "Innovative tech solution for agriculture", "documents": { "business_plan": "url_to_business_plan" }, "reviewerComments": "Excellent proposal" },
+    { "startupId": 2, "applicationDate": "2023-12-10", "status": "Approved", "requestedAmount": 50000, "projectDescription": "Community health improvement project", "documents": { "business_plan": "url_to_business_plan" }, "reviewerComments": "Impactful project" }
+  ],
+  "progressReports": [
+    { "startupId": 1, "reportingPeriod": "2024-03-01", "milestonesAchieved": "Prototype developed", "fundsUtilized": 30000, "impactMetrics": { "jobs_created": 5, "farms_improved": 3 }, "challengesFaced": "Supply chain issues", "futurePlans": "Expand to new regions" },
+    { "startupId": 1, "reportingPeriod": "2024-06-01", "milestonesAchieved": "Field trials completed", "fundsUtilized": 50000, "impactMetrics": { "jobs_created": 10, "farms_improved": 5 }, "challengesFaced": "Regulatory hurdles", "futurePlans": "Commercial launch" },
+    { "startupId": 2, "reportingPeriod": "2024-04-01", "milestonesAchieved": "Community workshops held", "fundsUtilized": 20000, "impactMetrics": { "people_reached": 200, "health_improved": 150 }, "challengesFaced": "Funding delays", "futurePlans": "More workshops planned" }
+  ],
+  "financialTracking": [
+    { "startupId": 1, "date": "2024-01-20", "amount": 15000, "category": "Equipment", "description": "Purchase of agricultural drones" },
+    { "startupId": 1, "date": "2024-02-10", "amount": 10000, "category": "Marketing", "description": "Campaign for early adopters" },
+    { "startupId": 1, "date": "2024-05-15", "amount": 25000, "category": "Salaries", "description": "Payment for project team" },
+    { "startupId": 2, "date": "2024-02-15", "amount": 10000, "category": "Training", "description": "Community health worker training" },
+    { "startupId": 2, "date": "2024-03-20", "amount": 10000, "category": "Supplies", "description": "Medical supplies for workshops" }
+  ],
+  "overview": {
+    "totalStartups": 10,
+    "totalGrantsDisbursed": 500000,
+    "totalFundsUtilized": 350000,
+    "totalFundsRemaining": 150000
+  }
+}
