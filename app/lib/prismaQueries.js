@@ -1,8 +1,10 @@
 import {prisma} from './db'; 
+import { unstable_noStore as noStore } from 'next/cache';
 
 
 // Function to fetch overview data
 export async function fetchOverview() {
+  noStore(); 
   try {
     const overview = await prisma.overview.findMany();
     return overview;
@@ -14,6 +16,7 @@ export async function fetchOverview() {
 
 // Function to fetch all users
 export async function fetchUsers() {
+  noStore();
   try {
     const users = await prisma.user.findMany();
     return users;
@@ -25,6 +28,7 @@ export async function fetchUsers() {
 
 // Function to fetch all startups
 export async function fetchStartups() {
+  noStore();
   try {
     const startups = await prisma.startup.findMany();
     return startups;
@@ -36,6 +40,7 @@ export async function fetchStartups() {
 
 // Function to fetch all applications
 export async function fetchApplications() {
+  noStore(); 
   try {
     const applications = await prisma.application.findMany({
       include: {
@@ -51,6 +56,7 @@ export async function fetchApplications() {
 
 // Function to fetch all progress reports
 export async function fetchProgressReports() {
+  noStore(); 
   try {
     const progressReports = await prisma.progressReport.findMany({
       include: {
@@ -66,6 +72,7 @@ export async function fetchProgressReports() {
 
 // Function to fetch all financial tracking records
 export async function fetchFinancialTracking() {
+  noStore();
   try {
     const financialTracking = await prisma.financialTracking.findMany({
       include: {
@@ -81,6 +88,7 @@ export async function fetchFinancialTracking() {
 
 // Function to fetch user by email
 export async function getUser(email) {
+  noStore(); 
   try {
     const user = await prisma.user.findUnique({
       where: {
@@ -96,6 +104,7 @@ export async function getUser(email) {
 
 // Function to fetch a specific startup by ID
 export async function fetchStartupById(id) {
+  noStore(); 
   try {
     const startup = await prisma.startup.findUnique({
       where: {
