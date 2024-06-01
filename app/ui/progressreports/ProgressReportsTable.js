@@ -2,6 +2,7 @@ import {fetchProgressReports} from '@/app/lib/prismaQueries'
 
 const ProgressReportsTable = async  () => {
   const data = await fetchProgressReports(); 
+  console.log(data); 
 
   return (
     <div className="overflow-x-auto">
@@ -18,7 +19,7 @@ const ProgressReportsTable = async  () => {
           </tr>
         </thead>
         <tbody>
-          {data.data && data.data.map((report, index) => (
+          {data && data.map((report, index) => (
             <tr key={index} className="hover:bg-gray-50 transition-all duration-300 ease-in-out">
               <td className="py-3 px-4 border-b">{report.startupId}</td>
               <td className="py-3 px-4 border-b">{report.reportingPeriod.toLocaleString()}</td>
